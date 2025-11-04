@@ -34,6 +34,7 @@ public class DemoApplication {
                 super.init();
                 getComponentInstantiationListeners().add(
                         new SpringComponentInjector(this, ctx));
+                getCspSettings().blocking().disabled();
 
             }
         };
