@@ -4,6 +4,7 @@ import org.apache.wicket.Page;
 import org.apache.wicket.protocol.http.WebApplication;
 import org.apache.wicket.protocol.http.WicketFilter;
 import org.apache.wicket.spring.injection.annot.SpringComponentInjector;
+import org.eclipse.store.storage.types.StorageManager;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -17,7 +18,7 @@ public class DemoApplication {
     }
 
     @Bean
-    WebApplication wicketApp(ApplicationContext ctx) {
+    WebApplication wicketApp(ApplicationContext ctx, StorageManager storageManager) {
 
         return new WebApplication() {
 
@@ -35,6 +36,14 @@ public class DemoApplication {
                 getComponentInstantiationListeners().add(
                         new SpringComponentInjector(this, ctx));
                 getCspSettings().blocking().disabled();
+
+                LikesStorage root = (LikesStorage) storageManager.root();
+
+                if (root == null) {
+                    root = new LikesStorage();
+                    storageManager.setRoot(root);
+                    storageManager.storeRoot();
+                }
 
             }
         };
