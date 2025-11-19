@@ -1,36 +1,337 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:wicket="http://wicket.apache.org">
-<body>
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fullstack4j PoC - Dashboard</title>
+</head>
+<body class="vh-100 overflow-hidden bg-light">
 
-<div class="hero bg-base-200 min-h-screen">
-    <div class="hero-content text-center">
-        <div class="max-w-md">
-            <h1 class="text-5xl font-bold">Fullstack4J Proof of Concept</h1>
-            <p class="py-6">
-                Welcome to the PoC for full-stack java development
-                with Apache Wicket, Spring Boot, Spring Modulith and EclipseStore.
-                <br>
-                May the force be with you!
-            </p>
-            <div class="card bg-base-100 w-96 shadow-sm mx-auto">
-                <div class="card-body">
-                    <h2 class="card-title">Give us a Like!</h2>
-                    <p class="text-left">Please do not spare with your like. We have been liked <span
-                            wicket:id="counter"></span> times so far.</p>
-                    <div class="card-actions justify-end">
-                        <a wicket:id="likeButton" class="btn">
-                            Like
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5"
-                                 stroke="currentColor" class="size-[1.2em]">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                      d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"/>
-                            </svg>
-                        </a>
+<!-- Main Flex Container -->
+<div class="d-flex h-100">
+
+    <!-- SIDEBAR -->
+    <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark" style="width: 280px;">
+
+        <a href="#" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+            <i class="bi bi-layers-half fs-4 me-2"></i>
+            <span class="fs-4">Fullstack4j PoC</span>
+        </a>
+
+        <hr>
+
+        <ul class="nav nav-pills flex-column mb-auto">
+            <!-- Dashboard Active -->
+            <li class="nav-item">
+                <a href="#" class="nav-link active" aria-current="page">
+                    <i class="bi bi-speedometer2 me-2"></i>
+                    Dashboard
+                </a>
+            </li>
+            <li>
+                <a href="#" class="nav-link text-white">
+                    <i class="bi bi-person-lines-fill me-2"></i>
+                    Phone Book
+                </a>
+            </li>
+            <li>
+                <a href="#" class="nav-link text-white">
+                    <i class="bi bi-bookmarks me-2"></i>
+                    Bookmarks
+                </a>
+            </li>
+            <li>
+                <a href="#" class="nav-link text-white">
+                    <i class="bi bi-kanban me-2"></i>
+                    Tasks
+                </a>
+            </li>
+            <li>
+                <a href="#" class="nav-link text-white">
+                    <i class="bi bi-gear me-2"></i>
+                    Settings
+                </a>
+            </li>
+        </ul>
+
+        <hr>
+
+        <!-- User Profile -->
+        <div class="dropdown">
+            <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                <div class="rounded-circle me-2 bg-secondary d-flex justify-content-center align-items-center" style="width: 32px; height: 32px;">
+                    <i class="bi bi-person-fill"></i>
+                </div>
+                <strong>User Admin</strong>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
+                <li><a class="dropdown-item" href="#">Profile</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Sign out</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT WRAPPER -->
+    <div class="flex-grow-1 overflow-y-auto">
+
+        <div class="container-fluid p-5">
+
+            <!-- Page Header -->
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <div>
+                    <h2 class="fw-bold text-dark">Dashboard</h2>
+                    <p class="text-muted">Overview of your application status.</p>
+                </div>
+                <div>
+                    <span class="text-muted me-2">Last login: Today, 9:41 AM</span>
+                    <button class="btn btn-outline-primary btn-sm"><i class="bi bi-arrow-clockwise"></i> Refresh</button>
+                </div>
+            </div>
+
+            <!-- ROW 1: KPI CARDS -->
+            <div class="row g-4 mb-4">
+
+                <!-- KPI: Total Tasks -->
+                <div class="col-md-6 col-xl-3">
+                    <div class="card shadow-sm border-0 h-100 border-start border-4 border-primary">
+                        <div class="card-body d-flex align-items-center">
+                            <div class="rounded-circle bg-primary bg-opacity-10 text-primary p-3 me-3">
+                                <i class="bi bi-kanban fs-3"></i>
+                            </div>
+                            <div>
+                                <h6 class="card-subtitle text-muted mb-1">Pending Tasks</h6>
+                                <h3 class="card-title mb-0 fw-bold">12</h3>
+                                <small class="text-danger"><i class="bi bi-arrow-up"></i> 3 High Priority</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- KPI: Total Contacts -->
+                <div class="col-md-6 col-xl-3">
+                    <div class="card shadow-sm border-0 h-100 border-start border-4 border-success">
+                        <div class="card-body d-flex align-items-center">
+                            <div class="rounded-circle bg-success bg-opacity-10 text-success p-3 me-3">
+                                <i class="bi bi-people fs-3"></i>
+                            </div>
+                            <div>
+                                <h6 class="card-subtitle text-muted mb-1">Phone Book</h6>
+                                <h3 class="card-title mb-0 fw-bold">58</h3>
+                                <small class="text-success"><i class="bi bi-plus"></i> 2 New this week</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- KPI: Bookmarks -->
+                <div class="col-md-6 col-xl-3">
+                    <div class="card shadow-sm border-0 h-100 border-start border-4 border-info">
+                        <div class="card-body d-flex align-items-center">
+                            <div class="rounded-circle bg-info bg-opacity-10 text-info p-3 me-3">
+                                <i class="bi bi-bookmark-star fs-3"></i>
+                            </div>
+                            <div>
+                                <h6 class="card-subtitle text-muted mb-1">Bookmarks</h6>
+                                <h3 class="card-title mb-0 fw-bold">24</h3>
+                                <small class="text-muted">Quick Access Links</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- KPI: System -->
+                <div class="col-md-6 col-xl-3">
+                    <div class="card shadow-sm border-0 h-100 border-start border-4 border-warning">
+                        <div class="card-body d-flex align-items-center">
+                            <div class="rounded-circle bg-warning bg-opacity-10 text-warning p-3 me-3">
+                                <i class="bi bi-hdd-stack fs-3"></i>
+                            </div>
+                            <div>
+                                <h6 class="card-subtitle text-muted mb-1">System Status</h6>
+                                <h3 class="card-title mb-0 fw-bold">Online</h3>
+                                <small class="text-success"><i class="bi bi-check-circle-fill"></i> Wicket Running</small>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+
+            <!-- ROW 2: MAIN WIDGETS -->
+            <div class="row g-4">
+
+                <!-- WIDGET: Urgent Tasks -->
+                <div class="col-lg-8">
+                    <div class="card shadow-sm border-0 h-100">
+                        <div class="card-header bg-white py-3 d-flex justify-content-between align-items-center">
+                            <h6 class="mb-0 fw-bold"><i class="bi bi-exclamation-circle text-danger me-2"></i>Urgent Tasks</h6>
+                            <a href="#" class="btn btn-sm btn-light">View All</a>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-hover align-middle mb-0">
+                                <thead class="table-light">
+                                <tr>
+                                    <th class="ps-3">Task Title</th>
+                                    <th>Assigned To</th>
+                                    <th>Due Date</th>
+                                    <th class="text-end pe-3">Action</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td class="ps-3">
+                                        <div class="fw-bold">Fix Login Bug</div>
+                                        <small class="text-muted">Auth module failure</small>
+                                    </td>
+                                    <td><span class="badge bg-primary-subtle text-primary rounded-pill">John Doe</span></td>
+                                    <td class="text-danger fw-bold">Today</td>
+                                    <td class="text-end pe-3"><button class="btn btn-sm btn-outline-secondary">Details</button></td>
+                                </tr>
+                                <tr>
+                                    <td class="ps-3">
+                                        <div class="fw-bold">Database Migration</div>
+                                        <small class="text-muted">Update Schema</small>
+                                    </td>
+                                    <td><span class="badge bg-warning-subtle text-dark rounded-pill">Alice Smith</span></td>
+                                    <td>Tomorrow</td>
+                                    <td class="text-end pe-3"><button class="btn btn-sm btn-outline-secondary">Details</button></td>
+                                </tr>
+                                <tr>
+                                    <td class="ps-3">
+                                        <div class="fw-bold">Prepare Monthly Report</div>
+                                        <small class="text-muted">For stakeholders</small>
+                                    </td>
+                                    <td><span class="badge bg-info-subtle text-dark rounded-pill">Mike K.</span></td>
+                                    <td>Oct 28</td>
+                                    <td class="text-end pe-3"><button class="btn btn-sm btn-outline-secondary">Details</button></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- WIDGET: New Contacts -->
+                <div class="col-lg-4">
+                    <div class="card shadow-sm border-0 h-100">
+                        <div class="card-header bg-white py-3">
+                            <h6 class="mb-0 fw-bold"><i class="bi bi-person-plus text-success me-2"></i>Newest Employees</h6>
+                        </div>
+                        <div class="card-body p-0">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item d-flex align-items-center py-3">
+                                    <div class="rounded-circle bg-secondary text-white d-flex justify-content-center align-items-center me-3" style="width: 40px; height: 40px;">JD</div>
+                                    <div class="flex-grow-1">
+                                        <h6 class="mb-0">John Doe</h6>
+                                        <small class="text-muted">Engineering</small>
+                                    </div>
+                                    <a href="#" class="btn btn-sm btn-light"><i class="bi bi-telephone"></i></a>
+                                </li>
+                                <li class="list-group-item d-flex align-items-center py-3">
+                                    <div class="rounded-circle bg-success text-white d-flex justify-content-center align-items-center me-3" style="width: 40px; height: 40px;">AS</div>
+                                    <div class="flex-grow-1">
+                                        <h6 class="mb-0">Alice Smith</h6>
+                                        <small class="text-muted">Sales</small>
+                                    </div>
+                                    <a href="#" class="btn btn-sm btn-light"><i class="bi bi-telephone"></i></a>
+                                </li>
+                                <li class="list-group-item d-flex align-items-center py-3">
+                                    <div class="rounded-circle bg-info text-dark d-flex justify-content-center align-items-center me-3" style="width: 40px; height: 40px;">MK</div>
+                                    <div class="flex-grow-1">
+                                        <h6 class="mb-0">Mike Kowalski</h6>
+                                        <small class="text-muted">HR</small>
+                                    </div>
+                                    <a href="#" class="btn btn-sm btn-light"><i class="bi bi-telephone"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="card-footer bg-white text-center border-top-0 py-2">
+                            <a href="#" class="text-decoration-none small fw-bold">View Phone Book &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ROW 3: STATISTICS & QUICK LINKS -->
+            <div class="row g-4 mt-1">
+
+                <!-- WIDGET: Task Distribution (Visual using Progress Bars) -->
+                <div class="col-md-6">
+                    <div class="card shadow-sm border-0 h-100">
+                        <div class="card-body">
+                            <h6 class="fw-bold mb-4">Workload by Department</h6>
+
+                            <!-- Bar 1 -->
+                            <div class="mb-3">
+                                <div class="d-flex justify-content-between mb-1">
+                                    <small>Engineering</small>
+                                    <small class="fw-bold">75%</small>
+                                </div>
+                                <div class="progress" role="progressbar" style="height: 8px;">
+                                    <div class="progress-bar bg-primary" style="width: 75%"></div>
+                                </div>
+                            </div>
+
+                            <!-- Bar 2 -->
+                            <div class="mb-3">
+                                <div class="d-flex justify-content-between mb-1">
+                                    <small>Sales & Marketing</small>
+                                    <small class="fw-bold">45%</small>
+                                </div>
+                                <div class="progress" role="progressbar" style="height: 8px;">
+                                    <div class="progress-bar bg-success" style="width: 45%"></div>
+                                </div>
+                            </div>
+
+                            <!-- Bar 3 -->
+                            <div class="mb-3">
+                                <div class="d-flex justify-content-between mb-1">
+                                    <small>Human Resources</small>
+                                    <small class="fw-bold">20%</small>
+                                </div>
+                                <div class="progress" role="progressbar" style="height: 8px;">
+                                    <div class="progress-bar bg-warning" style="width: 20%"></div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- WIDGET: Quick Bookmarks -->
+                <div class="col-md-6">
+                    <div class="card shadow-sm border-0 h-100">
+                        <div class="card-body">
+                            <h6 class="fw-bold mb-3">Quick Access</h6>
+                            <p class="text-muted small mb-4">Most frequently used external tools.</p>
+
+                            <div class="d-grid gap-2 d-md-block">
+                                <a href="#" class="btn btn-outline-secondary mb-2 me-1">
+                                    <i class="bi bi-git me-1"></i> Git Repository
+                                </a>
+                                <a href="#" class="btn btn-outline-secondary mb-2 me-1">
+                                    <i class="bi bi-jira me-1"></i> Issue Tracker
+                                </a>
+                                <a href="#" class="btn btn-outline-secondary mb-2 me-1">
+                                    <i class="bi bi-file-earmark-text me-1"></i> Wiki / Docs
+                                </a>
+                                <a href="#" class="btn btn-outline-secondary mb-2 me-1">
+                                    <i class="bi bi-cloud me-1"></i> AWS Console
+                                </a>
+                                <a href="#" class="btn btn-outline-primary mb-2">
+                                    <i class="bi bi-plus me-1"></i> Add Shortcut
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div> <!-- End Row 3 -->
+
         </div>
     </div>
 </div>
+
 </body>
 </html>

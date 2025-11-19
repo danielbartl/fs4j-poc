@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:wicket="http://wicket.apache.org">
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wicket App - Settings</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+</head>
+<body class="vh-100 overflow-hidden bg-light">
+
+<!-- Main Flex Container -->
+<div class="d-flex h-100">
+
+    <!-- SIDEBAR -->
+    <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark" style="width: 280px;">
+
+        <a href="#" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+            <i class="bi bi-layers-half fs-4 me-2"></i>
+            <span class="fs-4">Wicket App</span>
+        </a>
+
+        <hr>
+
+        <ul class="nav nav-pills flex-column mb-auto">
+            <li class="nav-item">
+                <a href="#" class="nav-link text-white">
+                    <i class="bi bi-speedometer2 me-2"></i>
+                    Dashboard
+                </a>
+            </li>
+            <li>
+                <!-- Updated to "Phone Book" (Two words) per discussion -->
+                <a href="#" class="nav-link text-white">
+                    <i class="bi bi-person-lines-fill me-2"></i>
+                    Phone Book
+                </a>
+            </li>
+            <li>
+                <a href="#" class="nav-link text-white">
+                    <i class="bi bi-bookmarks me-2"></i>
+                    Bookmarks
+                </a>
+            </li>
+            <li>
+                <a href="#" class="nav-link text-white">
+                    <i class="bi bi-kanban me-2"></i>
+                    Tasks
+                </a>
+            </li>
+            <!-- Active Settings Link -->
+            <li>
+                <a href="#" class="nav-link active" aria-current="page">
+                    <i class="bi bi-gear me-2"></i>
+                    Settings
+                </a>
+            </li>
+        </ul>
+
+        <hr>
+
+        <!-- User Profile -->
+        <div class="dropdown">
+            <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                <div class="rounded-circle me-2 bg-secondary d-flex justify-content-center align-items-center" style="width: 32px; height: 32px;">
+                    <i class="bi bi-person-fill"></i>
+                </div>
+                <strong>User Admin</strong>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
+                <li><a class="dropdown-item" href="#">Profile</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Sign out</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT WRAPPER -->
+    <div class="flex-grow-1 overflow-y-auto">
+
+        <div class="container-fluid p-5">
+
+            <h2 class="fw-bold text-dark mb-4">Settings</h2>
+
+            <div class="row">
+
+                <!-- LEFT COL: Settings Navigation -->
+                <div class="col-md-3 mb-4">
+                    <div class="card shadow-sm border-0">
+                        <div class="list-group list-group-flush">
+                            <!-- Profile Link -->
+                            <a class="list-group-item list-group-item-action active py-3" data-bs-toggle="pill" href="#v-pills-profile">
+                                <i class="bi bi-person me-2"></i> Public Profile
+                            </a>
+                            <!-- Account Link -->
+                            <a class="list-group-item list-group-item-action py-3" data-bs-toggle="pill" href="#v-pills-account">
+                                <i class="bi bi-shield-lock me-2"></i> Account & Security
+                            </a>
+                            <!-- Notifications Link -->
+                            <a class="list-group-item list-group-item-action py-3" data-bs-toggle="pill" href="#v-pills-notifications">
+                                <i class="bi bi-bell me-2"></i> Notifications
+                            </a>
+                            <!-- Appearance Link -->
+                            <a class="list-group-item list-group-item-action py-3" data-bs-toggle="pill" href="#v-pills-appearance">
+                                <i class="bi bi-palette me-2"></i> Appearance
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RIGHT COL: Content Forms -->
+                <div class="col-md-9">
+                    <div class="tab-content" id="v-pills-tabContent">
+
+                        <!-- TAB 1: PUBLIC PROFILE -->
+                        <div class="tab-pane fade show active" id="v-pills-profile" tabindex="-0">
+                            <div class="card shadow-sm border-0">
+                                <div class="card-header bg-white py-3">
+                                    <h5 class="mb-0 card-title">Public Profile</h5>
+                                </div>
+                                <div class="card-body p-4">
+
+                                    <!-- Avatar Upload -->
+                                    <div class="d-flex align-items-center mb-4">
+                                        <div class="rounded-circle bg-secondary d-flex justify-content-center align-items-center me-3 text-white fs-3" style="width: 64px; height: 64px;">
+                                            UA
+                                        </div>
+                                        <div>
+                                            <label for="formFile" class="form-label fw-bold mb-1">Profile Picture</label>
+                                            <input class="form-control form-control-sm" type="file" id="formFile">
+                                            <div class="form-text">JPG or PNG. Max size of 800K</div>
+                                        </div>
+                                    </div>
+
+                                    <hr class="my-4">
+
+                                    <form>
+                                        <div class="row mb-3">
+                                            <div class="col-md-6">
+                                                <label class="form-label">First Name</label>
+                                                <input type="text" class="form-control" value="User">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label class="form-label">Last Name</label>
+                                                <input type="text" class="form-control" value="Admin">
+                                            </div>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label">Email Address</label>
+                                            <input type="email" class="form-control" value="admin@wicketapp.com">
+                                        </div>
+                                        <div class="mb-4">
+                                            <label class="form-label">Bio</label>
+                                            <textarea class="form-control" rows="3">Administrator account for the main application.</textarea>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- TAB 2: ACCOUNT SECURITY -->
+                        <div class="tab-pane fade" id="v-pills-account" tabindex="-0">
+                            <div class="card shadow-sm border-0">
+                                <div class="card-header bg-white py-3">
+                                    <h5 class="mb-0 card-title">Password & Security</h5>
+                                </div>
+                                <div class="card-body p-4">
+                                    <form>
+                                        <div class="mb-3">
+                                            <label class="form-label">Current Password</label>
+                                            <input type="password" class="form-control">
+                                        </div>
+                                        <div class="row mb-4">
+                                            <div class="col-md-6">
+                                                <label class="form-label">New Password</label>
+                                                <input type="password" class="form-control">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label class="form-label">Confirm New Password</label>
+                                                <input type="password" class="form-control">
+                                            </div>
+                                        </div>
+
+                                        <h6 class="mb-3">Two-Factor Authentication</h6>
+                                        <div class="form-check form-switch mb-4">
+                                            <input class="form-check-input" type="checkbox" role="switch" id="2faSwitch">
+                                            <label class="form-check-label" for="2faSwitch">Enable two-factor authentication</label>
+                                        </div>
+
+                                        <button type="submit" class="btn btn-primary">Update Security</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- TAB 3: NOTIFICATIONS -->
+                        <div class="tab-pane fade" id="v-pills-notifications" tabindex="-0">
+                            <div class="card shadow-sm border-0">
+                                <div class="card-header bg-white py-3">
+                                    <h5 class="mb-0 card-title">Notification Preferences</h5>
+                                </div>
+                                <div class="card-body p-4">
+                                    <form>
+                                        <h6 class="mb-3">Email Notifications</h6>
+                                        <div class="mb-3 form-check form-switch">
+                                            <input class="form-check-input" type="checkbox" role="switch" id="notif1" checked>
+                                            <label class="form-check-label" for="notif1">Weekly digest</label>
+                                        </div>
+                                        <div class="mb-3 form-check form-switch">
+                                            <input class="form-check-input" type="checkbox" role="switch" id="notif2" checked>
+                                            <label class="form-check-label" for="notif2">New tasks assigned to me</label>
+                                        </div>
+                                        <div class="mb-4 form-check form-switch">
+                                            <input class="form-check-input" type="checkbox" role="switch" id="notif3">
+                                            <label class="form-check-label" for="notif3">New product updates</label>
+                                        </div>
+
+                                        <hr>
+
+                                        <h6 class="mb-3 mt-4">System Alerts</h6>
+                                        <div class="mb-3 form-check">
+                                            <input class="form-check-input" type="checkbox" id="alert1" checked>
+                                            <label class="form-check-label" for="alert1">Notify on login from new device</label>
+                                        </div>
+
+                                        <button type="submit" class="btn btn-primary mt-3">Save Preferences</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- TAB 4: APPEARANCE -->
+                        <div class="tab-pane fade" id="v-pills-appearance" tabindex="-0">
+                            <div class="card shadow-sm border-0">
+                                <div class="card-header bg-white py-3">
+                                    <h5 class="mb-0 card-title">Appearance Settings</h5>
+                                </div>
+                                <div class="card-body p-4">
+                                    <form>
+                                        <div class="mb-4">
+                                            <label class="form-label d-block mb-3">Interface Theme</label>
+
+                                            <div class="btn-group" role="group" aria-label="Theme selection">
+                                                <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
+                                                <label class="btn btn-outline-secondary" for="btnradio1"><i class="bi bi-sun me-2"></i>Light</label>
+
+                                                <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+                                                <label class="btn btn-outline-secondary" for="btnradio2"><i class="bi bi-moon me-2"></i>Dark</label>
+
+                                                <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
+                                                <label class="btn btn-outline-secondary" for="btnradio3"><i class="bi bi-display me-2"></i>Auto</label>
+                                            </div>
+                                        </div>
+
+                                        <div class="mb-4">
+                                            <label class="form-label">Language</label>
+                                            <select class="form-select w-50">
+                                                <option selected>English (US)</option>
+                                                <option>German (Deutsch)</option>
+                                                <option>Spanish (Español)</option>
+                                            </select>
+                                        </div>
+
+                                        <button type="submit" class="btn btn-primary">Apply Changes</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS Bundle -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

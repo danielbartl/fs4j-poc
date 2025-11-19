@@ -27,8 +27,12 @@ public class HomePage extends WebPage {
     public void renderHead(IHeaderResponse response) {
         super.renderHead(response);
 
-        response.render(JavaScriptHeaderItem.forUrl("https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"));
-        response.render(CssHeaderItem.forUrl("https://cdn.jsdelivr.net/npm/daisyui@5"));
+        // Bootstrap 5 CSS
+        response.render(CssHeaderItem.forUrl("https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"));
+        response.render(JavaScriptHeaderItem.forUrl("https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"));
+
+        // Bootstrap Icons
+        response.render(CssHeaderItem.forUrl("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"));
 
     }
 
@@ -36,8 +40,8 @@ public class HomePage extends WebPage {
     protected void onInitialize() {
 
         super.onInitialize();
-        counter();
-        likeButton();
+        //counter();
+        //likeButton();
 
     }
 

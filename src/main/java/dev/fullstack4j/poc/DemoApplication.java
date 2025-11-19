@@ -45,6 +45,11 @@ public class DemoApplication {
                     storageManager.storeRoot();
                 }
 
+                mountPage("/phonebook", PhoneBook.class);
+                mountPage("/bookmarks", Bookmarks.class);
+                mountPage("/tasks", Tasks.class);
+                mountPage("/settings", Settings.class);
+
             }
         };
 
