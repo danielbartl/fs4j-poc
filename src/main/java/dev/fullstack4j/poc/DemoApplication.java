@@ -1,5 +1,9 @@
 package dev.fullstack4j.poc;
 
+import dev.fullstack4j.poc.bookmarks.Bookmarks;
+import dev.fullstack4j.poc.phonebook.PhoneBook;
+import dev.fullstack4j.poc.settings.Settings;
+import dev.fullstack4j.poc.tasks.Tasks;
 import org.apache.wicket.Page;
 import org.apache.wicket.protocol.http.WebApplication;
 import org.apache.wicket.protocol.http.WicketFilter;

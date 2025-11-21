@@ -1,4 +1,4 @@
-package dev.fullstack4j.poc;
+package dev.fullstack4j.poc.tasks;
 
 import org.apache.wicket.markup.html.WebPage;
 
